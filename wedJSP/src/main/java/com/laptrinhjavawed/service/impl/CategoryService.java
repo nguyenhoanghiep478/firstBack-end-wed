@@ -16,8 +16,8 @@ public class CategoryService implements ICategoryService{
 		return categoryDao.findAll();
 	}
 	@Override
-	public List<CategoryModel> findById(Long id) {
-		return categoryDao.findById(id);
+	public CategoryModel findOne(Long id) {
+		return categoryDao.findOne(id);
 	}
 	@Override
 	public List<CategoryModel> findByName(String name) {
@@ -28,8 +28,9 @@ public class CategoryService implements ICategoryService{
 		return categoryDao.findBycode(code);
 	}
 	@Override
-	public Long save(CategoryModel category) {
-		return categoryDao.save(category);
+	public CategoryModel save(CategoryModel category) {
+		Long categoryId= categoryDao.insert(category);
+		return categoryDao.findOne(categoryId);
 	}
 	@Override
 	public void update(CategoryModel category) {
@@ -37,7 +38,7 @@ public class CategoryService implements ICategoryService{
 	}
 	@Override
 	public void delete(CategoryModel category) {
-		categoryDao.delete(category);
+		categoryDao.deleteOne(category);
 	}
 
 }

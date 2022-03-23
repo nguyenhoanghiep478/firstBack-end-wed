@@ -17,7 +17,13 @@ public class RoleService implements IRoleService{
 	}
 
 	@Override
-	public List<RoleModel> findById(Long id) {
-		return role.findById(id);
+	public RoleModel findOne(Long id) {
+		return role.findOne(id);
+	}
+
+	@Override
+	public RoleModel save(RoleModel roleModel) {
+		Long roleId= role.insert(roleModel);
+		return role.findOne(roleId);
 	}
 }

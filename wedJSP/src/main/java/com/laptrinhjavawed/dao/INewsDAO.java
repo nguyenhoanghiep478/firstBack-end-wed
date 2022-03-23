@@ -2,10 +2,16 @@ package com.laptrinhjavawed.dao;
 
 import java.util.List;
 
+import com.laptrinhjavawed.Pageble.Pageble;
 import com.laptrinhjavawed.model.NewsModel;
+import com.laptrinhjavawed.model.UserModel;
 
-public interface INewsDAO{
-	List<NewsModel> findAll();
-	List<NewsModel> findById(Long id);
+public interface INewsDAO extends GenericDAO<NewsModel>{
+	List<NewsModel> findAll(Pageble pageble);
+	NewsModel findOne(Long id);
 	List<NewsModel> findByCategoryID(Long categoryId);
+	Long insert(NewsModel newsModel);
+	void delete(Long id);
+	void update(NewsModel newsUpdate);
+	Integer getTotalItem();
 }

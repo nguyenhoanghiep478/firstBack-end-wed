@@ -1,20 +1,21 @@
 package com.laptrinhjavawed.model;
 
-public class CommentModel extends AbstractModel{
-	private Long newsID;
-	private Long userID;
+public class CommentModel extends AbstractModel<CommentModel>{
+	private Long newsId;
+	private Long userId;
 	private String content;
-	public Long getNewsID() {
-		return newsID;
+	
+	public Long getNewsId() {
+		return newsId;
 	}
-	public void setNewsID(Long newsID) {
-		this.newsID = newsID;
+	public void setNewsId(Long newsId) {
+		this.newsId = newsId;
 	}
-	public Long getUserID() {
-		return userID;
+	public Long getUserId() {
+		return userId;
 	}
-	public void setUserID(Long userID) {
-		this.userID = userID;
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 	public String getContent() {
 		return content;

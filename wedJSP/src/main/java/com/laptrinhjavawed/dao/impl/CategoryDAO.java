@@ -1,5 +1,6 @@
 package com.laptrinhjavawed.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.laptrinhjavawed.dao.ICategoryDAO;
@@ -26,15 +27,17 @@ public class CategoryDAO extends AbstractDAO<CategoryModel> implements ICategory
 	}
 
 	@Override
-	public List<CategoryModel> findById(Long id) {
+	public CategoryModel findOne(Long id) {
 		String sql="SELECT * FROM category Where id=?";
-		return query(sql,new CategoryMapper(),id);
+		List<CategoryModel> result=new ArrayList<CategoryModel>();
+		result=query(sql,new CategoryMapper(),id);
+		return result.isEmpty()? null:result.get(0);
 	}
 
 	@Override
-	public Long save(CategoryModel category) {
-		String sql="INSERT INTO category(id,name,code) values(?,?,?)";
-		return save(sql,category.getId(),category.getName(),category.getCode());
+	public Long insert(CategoryModel category) {
+		String sql="INSERT INTO category(name,code) values(?,?)";
+		return save(sql,category.getName(),category.getCode());
 	}
 
 	@Override
@@ -44,11 +47,9 @@ public class CategoryDAO extends AbstractDAO<CategoryModel> implements ICategory
 	}
 
 	@Override
-	public void delete(CategoryModel category) {
+	public void deleteOne(CategoryModel category) {
 		String sql="DELETE FROM category Where id=?";
 		update(sql,category.getId());
 	}
-
 	
-
 }

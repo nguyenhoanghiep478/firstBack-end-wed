@@ -17,8 +17,8 @@ public class CommentService implements ICommentService{
 	}
 
 	@Override
-	public List<CommentModel> findById(Long id) {
-		return comment.findById(id);
+	public CommentModel findOne(Long id) {
+		return comment.findOne(id);
 	}
 
 	@Override
@@ -29,6 +29,25 @@ public class CommentService implements ICommentService{
 	@Override
 	public List<CommentModel> findByUserId(Long userid){
 		return comment.findByUserId(userid);
+	}
+
+	@Override
+	public CommentModel save(CommentModel commentModel) {
+		Long commentId= comment.insert(commentModel);
+		return comment.findOne(commentId);
+	}
+
+	@Override
+	public CommentModel update(CommentModel commentModel) {
+		comment.update(commentModel);
+		return comment.findOne(commentModel.getId());
+	}
+
+	@Override
+	public void delete(Long[] deleteIds) {
+		for (Long id : deleteIds) {
+			comment.delete(id);
+		}
 	}
 
 }

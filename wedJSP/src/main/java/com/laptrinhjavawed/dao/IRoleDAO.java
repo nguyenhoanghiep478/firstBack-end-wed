@@ -4,7 +4,8 @@ import java.util.List;
 
 import com.laptrinhjavawed.model.RoleModel;
 
-public interface IRoleDAO{
+public interface IRoleDAO extends GenericDAO<RoleModel>{
 	List<RoleModel> findAll();
-	List<RoleModel> findById(Long id);
+	RoleModel findOne(Long id);
+	Long insert(RoleModel roleModel);
 }

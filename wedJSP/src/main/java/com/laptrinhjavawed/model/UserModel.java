@@ -1,28 +1,29 @@
 package com.laptrinhjavawed.model;
 
-public class UserModel extends AbstractModel {
+public class UserModel extends AbstractModel<UserModel> {
 	private Long roleId;
-	private String fullname; 
-	private String name;
+	private String fullName; 
+	private String userName;
 	private String password;
 	private boolean status;
+	private RoleModel role;
 	public Long getRoleId() {
 		return roleId;
 	}
 	public void setRoleId(Long roleId) {
 		this.roleId = roleId;
 	}
-	public String getFullname() {
-		return fullname;
+	public String getFullName() {
+		return fullName;
 	}
-	public void setFullname(String fullname) {
-		this.fullname = fullname;
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
-	public String getName() {
-		return name;
+	public String getUserName() {
+		return userName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	public String getPassword() {
 		return password;
@@ -35,6 +36,12 @@ public class UserModel extends AbstractModel {
 	}
 	public void setStatus(boolean status) {
 		this.status = status;
+	}
+	public RoleModel getRole() {
+		return role;
+	}
+	public void setRole(RoleModel role) {
+		this.role = role;
 	}
 	
 }

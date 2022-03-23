@@ -4,12 +4,12 @@ import java.util.List;
 
 import com.laptrinhjavawed.model.CategoryModel;
 
-public interface ICategoryDAO{
+public interface ICategoryDAO extends GenericDAO<CategoryModel>{
 	List<CategoryModel> findAll();
-	List<CategoryModel> findById(Long id);
+	CategoryModel findOne(Long id);
 	List<CategoryModel> findByName(String name);
 	List<CategoryModel> findBycode(String code);
-	Long save(CategoryModel category);
+	Long insert(CategoryModel category);
 	void update(CategoryModel category);
-	void delete(CategoryModel category);
+	void deleteOne(CategoryModel category);
 }

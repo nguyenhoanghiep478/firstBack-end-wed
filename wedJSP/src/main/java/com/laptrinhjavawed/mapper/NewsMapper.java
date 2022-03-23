@@ -13,6 +13,10 @@ public class NewsMapper extends AbstractMapper implements RowMapper<NewsModel> {
 		try {
 			CommonMapper(news, resultSet);
 			news.setTitle(resultSet.getString("title"));
+			news.setCategoryId(resultSet.getLong("categoryid"));
+			news.setShortDescription(resultSet.getString("shortdesciption"));
+			news.setContent(resultSet.getString("content"));
+			news.setThumbnail(resultSet.getString("thumbnail"));
 			return news;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

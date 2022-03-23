@@ -6,7 +6,10 @@ import com.laptrinhjavawed.model.CommentModel;
 
 public interface ICommentService {
 	List<CommentModel> findAll();
-	List<CommentModel> findById(Long id);
+	CommentModel save(CommentModel commentModel);
+	CommentModel findOne(Long id);
 	List<CommentModel> findByNewsId(Long newsid);
 	List<CommentModel> findByUserId(Long userid);
+	CommentModel update(CommentModel commentModel);
+	void delete(Long[] deleteIds);
 }
