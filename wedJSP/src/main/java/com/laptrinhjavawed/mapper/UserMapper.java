@@ -15,7 +15,7 @@ public class UserMapper extends AbstractMapper implements RowMapper<UserModel>{
 				CommonMapper(userModel, resultSet);
 				userModel.setRoleId(resultSet.getLong("roleid"));
 				userModel.setFullName(resultSet.getString("fullname"));
-				userModel.setUserName(resultSet.getString("name"));
+				userModel.setUserName(resultSet.getString("username"));
 				userModel.setPassword(resultSet.getString("password"));
 				userModel.setStatus(resultSet.getBoolean("status"));
 				try {

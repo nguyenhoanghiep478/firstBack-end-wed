@@ -12,6 +12,12 @@ public class AbstractModel<T>{
 	private String modifiedBy=null;
 	private String sortName=null;
 	private String sortBy=null;
+	private Long[] ids=null;
+	private List<T> listResult=new ArrayList<T>();
+	private Integer page=null;
+	private Integer maxPageItems=null;
+	private Integer totalPages=null;
+	private Integer totalItem=null;
 	public String getSortName() {
 		return sortName;
 	}
@@ -24,12 +30,6 @@ public class AbstractModel<T>{
 	public void setSortBy(String sortBy) {
 		this.sortBy = sortBy;
 	}
-	private Long[] ids=null;
-	private List<T> listResult=new ArrayList<T>();
-	private Integer page=null;
-	private Integer maxPageItems=null;
-	private Integer totalPages=null;
-	private Integer totalItem=null;
 	public List<T> getListResult() {
 		return listResult;
 	}

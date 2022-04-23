@@ -1,14 +1,13 @@
 package com.laptrinhjavawed.dao.impl;
 
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
-
 import com.laptrinhjavawed.Pageble.Pageble;
 import com.laptrinhjavawed.dao.INewsDAO;
 import com.laptrinhjavawed.mapper.NewsMapper;
 import com.laptrinhjavawed.model.NewsModel;
-import com.laptrinhjavawed.model.UserModel;
+
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 public class NewsDAO extends AbstractDAO<NewsModel> implements INewsDAO {
 	@Override
@@ -20,7 +19,7 @@ public class NewsDAO extends AbstractDAO<NewsModel> implements INewsDAO {
 	@Override
 	public List<NewsModel> findAll(Pageble pageble) {
 		StringBuilder sql=new StringBuilder("SELECT * FROM tables.news") ;
-		if(pageble.getSorter().getSortName()!=null&&pageble.getSorter().getSortName()!=null) {
+		if(pageble.getSorter().getSortName()!=null&&pageble.getSorter().getSortBy()!=null) {
 			sql.append(" ORDER BY"+" "+pageble.getSorter().getSortName()+" "+pageble.getSorter().getSortBy());
 		}
 		if(pageble.getOffSet()!=null&&pageble.getLimit()!=null) {
@@ -44,8 +43,8 @@ public class NewsDAO extends AbstractDAO<NewsModel> implements INewsDAO {
 			newsModel.setCreatedBy("creater");
 			newsModel.setModifiedBy("modifier");
 			StringBuilder sql= new StringBuilder("INSERT INTO ");
-			sql.append("news(categoryid,title,shortdesciption,content,thumbnail,createddate,createdby,modifieddate,modifiedby) values(?,?,?,?,?,?,?,?,?)");
-			return save(sql.toString(),newsModel.getCategoryId(),newsModel.getTitle(),newsModel.getShortDescription(),newsModel.getContent(),newsModel.getThumbnail(),newsModel.getCreatedDate(),newsModel.getCreatedBy(),newsModel.getModifiedDate(),newsModel.getModifiedBy());
+			sql.append("news(categoryid,title,shortdesciption,content,thumbnail,createddate,createdby,modifieddate,modifiedby,userid) values(?,?,?,?,?,?,?,?,?,?)");
+			return save(sql.toString(),newsModel.getCategoryId(),newsModel.getTitle(),newsModel.getShortDescription(),newsModel.getContent(),newsModel.getThumbnail(),newsModel.getCreatedDate(),newsModel.getCreatedBy(),newsModel.getModifiedDate(),newsModel.getModifiedBy(),newsModel.getUserId());
 	}
 	public void delete(Long id) {
 		StringBuilder sql= new StringBuilder("DELETE FROM ");
@@ -65,6 +64,12 @@ public class NewsDAO extends AbstractDAO<NewsModel> implements INewsDAO {
 	public Integer getTotalItem() {
 			StringBuilder sql=new StringBuilder("Select count(*) from tables.news");
 			return count(sql.toString());
+	}
+	@Override
+	public List<NewsModel> findByUserName(String userName) {
+		StringBuilder sql= new StringBuilder("Select * from tables.news  as n");
+		sql.append(" inner join tables.user as u on n.userid=u.id where username=?");
+		return query(sql.toString(), new NewsMapper(), userName);
 	}
 	
 }

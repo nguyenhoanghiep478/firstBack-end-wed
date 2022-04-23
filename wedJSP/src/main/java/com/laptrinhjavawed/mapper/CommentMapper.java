@@ -16,6 +16,7 @@ public class CommentMapper extends AbstractMapper implements RowMapper<CommentMo
 			commentModel.setContent(resultSet.getString("content"));
 			commentModel.setUserId(resultSet.getLong("userid"));
 			commentModel.setNewsId(resultSet.getLong("newsid"));
+			commentModel.setUserName(resultSet.getString("username"));
 			return commentModel;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

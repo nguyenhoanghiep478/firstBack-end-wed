@@ -7,6 +7,7 @@ public class UserModel extends AbstractModel<UserModel> {
 	private String password;
 	private boolean status;
 	private RoleModel role;
+	private String confirmPassword;
 	public Long getRoleId() {
 		return roleId;
 	}
@@ -42,6 +43,12 @@ public class UserModel extends AbstractModel<UserModel> {
 	}
 	public void setRole(RoleModel role) {
 		this.role = role;
+	}
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
 	}
 	
 }

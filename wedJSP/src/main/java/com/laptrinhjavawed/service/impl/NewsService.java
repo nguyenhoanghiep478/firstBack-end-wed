@@ -54,5 +54,10 @@ public class NewsService implements INewsService{
 	public Integer getTotalItem() {
 		return news.getTotalItem();
 	}
+
+	@Override
+	public List<NewsModel> findByUserName(String userName) {
+		return news.findByUserName(userName); 
+	}
 	
 }

@@ -12,4 +12,10 @@
 	<decorator name="login" page="login.jsp">
 		<pattern>/dang-nhap*</pattern>
 	</decorator>
+	<decorator name="registration" page="registration.jsp">
+		<pattern>/dang-ky*</pattern>
+	</decorator>
+	<decorator name="newsfeed" page="newsfeed.jsp">
+		<pattern>/bang-tin*</pattern>
+	</decorator>
 </decorators>

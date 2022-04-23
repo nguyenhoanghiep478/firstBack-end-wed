@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="wedJSP:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>wedJSP</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="wedJSP-1.0.war">
+      <element id="artifact" artifact-name="wedJSP:war exploded" />
+    </root>
+  </artifact>
+</component>

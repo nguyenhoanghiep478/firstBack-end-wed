@@ -52,6 +52,24 @@
                 </li>
             </ul>
         </li>
+         <li >
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-list"></i>
+                <span class="menu-text"></span>
+               Quản lý người dùng
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+            <b class="arrow"></b>
+            <ul class="submenu">
+                <li>
+                    <a href='<c:url value="/admin-user?page=1&maxPageItems=6&sortName=title&sortBy=asc"/>'>
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Danh sách người dùng
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+            </ul>
+        </li>
     </ul>
     <div class="sidebar-toggle sidebar-collapse">
         <i class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>

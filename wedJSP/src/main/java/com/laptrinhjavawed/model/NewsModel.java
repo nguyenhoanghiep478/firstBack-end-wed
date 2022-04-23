@@ -1,28 +1,13 @@
 package com.laptrinhjavawed.model;
 
-import java.sql.Timestamp;
-
 public class NewsModel extends AbstractModel<NewsModel>{
-	private Timestamp createdDate=null;
-	private Timestamp modifiedDate=null;
 	private Long categoryId=null;
+	private Long userId=null;
 	private String title=null;
 	private String thumbnail=null;
 	private String shortDescription=null;
 	private String content=null;
 	
-	public Timestamp getCreatedDate() {
-		return createdDate;
-	}
-	public void setCreatedDate(Timestamp createdDate) {
-		this.createdDate = createdDate;
-	}
-	public Timestamp getModifiedDate() {
-		return modifiedDate;
-	}
-	public void setModifiedDate(Timestamp modifiedDate) {
-		this.modifiedDate = modifiedDate;
-	}
 	public Long getCategoryId() {
 		return categoryId;
 	}
@@ -52,6 +37,12 @@ public class NewsModel extends AbstractModel<NewsModel>{
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+	public Long getUserId() {
+		return userId;
+	}
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 	
 }

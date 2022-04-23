@@ -6,11 +6,14 @@ import com.laptrinhjavawed.sort.Sorter;
 public class PageRequest implements Pageble{
 	private Integer page=null;
 	private Integer maxPageItems=null;
-	private Sorter sorter=null;
+	private Sorter sorter=new Sorter(null, null);
 	public PageRequest(Integer Page,Integer maxPageItems,Sorter sorter){
 		this.page=Page;
 		this.maxPageItems=maxPageItems;
 		this.sorter=sorter;
+	}
+	public PageRequest(){
+		
 	}
 	@Override
 	public Integer getPage(){
@@ -19,6 +22,9 @@ public class PageRequest implements Pageble{
 
 	@Override
 	public Integer getOffSet() {
+		if(this.page==null) {
+			return null;
+		}
 		return (this.page-1)*this.maxPageItems;
 	}
 

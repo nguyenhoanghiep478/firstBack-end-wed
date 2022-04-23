@@ -26,7 +26,7 @@ public class CommentDAO extends AbstractDAO<CommentModel> implements ICommentDAO
 
 	@Override
 	public List<CommentModel> findByNewsId(Long newsid) {
-		String sql="SELECT * FROM comment WHERE newsid=?";
+		String sql="SELECT * FROM tables.comment as c inner join tables.user as u on c.userid=u.id WHERE newsid=?";
 		return query(sql,new CommentMapper(),newsid);
 	}
 
@@ -40,7 +40,7 @@ public class CommentDAO extends AbstractDAO<CommentModel> implements ICommentDAO
 			commentModel.setModifiedDate(new Timestamp(System.currentTimeMillis()));
 			commentModel.setModifiedBy("modifier");
 			StringBuilder sql=new StringBuilder("insert into ");
-			sql.append("comment(newsid,userid,content,createddate,modifieddate)values(?,?,?,?,?)");
+			sql.append("tables.comment(newsid,userid,content,createddate,modifieddate) values(?,?,?,?,?)");
 			return save(sql.toString(), commentModel.getNewsId(),commentModel.getUserId(),commentModel.getContent(),commentModel.getCreatedDate(),commentModel.getModifiedDate());
 	}
 

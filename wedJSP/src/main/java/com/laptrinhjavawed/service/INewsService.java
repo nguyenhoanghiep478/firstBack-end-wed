@@ -13,5 +13,5 @@ public interface INewsService {
 	void delete(Long[] ids);
 	NewsModel update(NewsModel newsModel);
 	Integer getTotalItem();
-
+	List<NewsModel> findByUserName(String userName);
 }

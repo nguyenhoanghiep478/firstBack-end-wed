@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.laptrinhjavawed.constant.SystemConstant;
 import com.laptrinhjavawed.model.UserModel;
+import com.laptrinhjavawed.utils.SessionUtils;
 
 public class AuthorizationFilter implements Filter {
 	private ServletContext context;
@@ -28,16 +29,16 @@ public class AuthorizationFilter implements Filter {
 		HttpServletRequest request=(HttpServletRequest)servletRequest;
 		HttpServletResponse response=(HttpServletResponse)servletResponse;
 		String url=request.getRequestURI();
-		if(url.startsWith("/admin")) {
-			UserModel model= (UserModel) request.getAttribute("USERMODEL");
-			if(model!=null) {
+		if(url.startsWith("/wedJSP/admin")) {
+			UserModel model= (UserModel) SessionUtils.getInstance().getValue(request,"USERMODEL");
+			if(model!=null&&model.getStatus()) {
 					if(model.getRole().getCode().equals(SystemConstant.ADMIN)) {
 						filterChain.doFilter(servletRequest, servletResponse);
 					}else if(model.getRole().getCode().equals(SystemConstant.USER)) {
-						response.sendRedirect("/trang-chu?action=login&message=not_permission&alert=danger");
+						response.sendRedirect(request.getContextPath()+"/dang-nhap?action=login&message=not_permission&alert=danger");
 					}
 			}else {
-				response.sendRedirect("/trang-chu?action=login&message=not_login&alert=danger");
+				response.sendRedirect(request.getContextPath()+"/dang-nhap?action=login&message=not_login&alert=danger");
 			}
 		}else {
 			filterChain.doFilter(servletRequest,servletResponse);

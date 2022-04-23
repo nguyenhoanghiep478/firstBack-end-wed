@@ -3,7 +3,6 @@
 <%@include file="/common/tagLib.jsp"%>
 <!DOCTYPE html>
 <html>
-
 <head>
 	<meta charset="UTF-8">
 	<title>Đăng Nhập</title>
@@ -47,15 +46,17 @@
 				</div>
 				<div class="card-footer">
 					<div class="d-flex justify-content-center links">
-						Don't have an account?<a href="#">Đăng Ký</a>
+						Don't have an account?<a href="<c:url value="/dang-ky?action=registration&isExist=false"/>">Đăng Ký</a>
 					</div>
 					<div class="d-flex justify-content-center">
 						<a href="#">Quên mật khẩu?</a>
 					</div>
 				</div>
+				<c:if test="${not empty message}">
 				<div id="message" class="alert alert-${alert}" role="alert">
   						${message}
 				</div>
+				</c:if>
 			</div>
 		</div>
 	</div>

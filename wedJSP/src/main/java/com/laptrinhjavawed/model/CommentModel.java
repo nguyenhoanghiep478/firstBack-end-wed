@@ -4,6 +4,7 @@ public class CommentModel extends AbstractModel<CommentModel>{
 	private Long newsId;
 	private Long userId;
 	private String content;
+	private String userName;
 	
 	public Long getNewsId() {
 		return newsId;
@@ -23,4 +24,11 @@ public class CommentModel extends AbstractModel<CommentModel>{
 	public void setContent(String content) {
 		this.content = content;
 	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	
 }
